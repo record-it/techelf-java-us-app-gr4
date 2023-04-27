@@ -68,4 +68,18 @@ public class RestBookController {
         }
     }
 
+    @PutMapping("/{bookId}")
+    public ResponseEntity updateBook(@RequestBody Book book, @PathVariable long bookId){
+        if (bookId != book.getId()){
+            return ResponseEntity.badRequest().build();
+        }
+        final Optional<Book> first = books.stream().filter(b -> b.getId() == bookId).findFirst();
+        if (first.isPresent()){
+            books.remove(first.get());
+            books.add(book);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
