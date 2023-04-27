@@ -1,7 +1,9 @@
 package pl.us.spring.gr4app.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.us.spring.gr4app.dto.RequestBookDto;
 import pl.us.spring.gr4app.model.Book;
 
 import java.net.URI;
@@ -51,8 +53,8 @@ public class RestBookController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Book> addBook(@RequestBody Book book){
-        book.setId(++index);
+    public ResponseEntity<Book> addBook(@Valid @RequestBody RequestBookDto dto){
+        final Book book = dto.withId(++index);
         books.add(book);
         return ResponseEntity.created(URI.create("/api/v1/books/"+index)).body(book);
     }
