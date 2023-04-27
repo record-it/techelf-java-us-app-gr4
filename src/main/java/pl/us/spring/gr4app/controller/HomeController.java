@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 
 @Controller
 public class HomeController {
+    byte a = 0x5;
     // /home?name=karol
     @RequestMapping("/home")
     public void home(HttpServletRequest request, HttpServletResponse response) throws IOException {

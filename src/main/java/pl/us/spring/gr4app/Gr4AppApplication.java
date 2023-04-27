@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Gr4AppApplication {
-
 	public static void main(String[] args) {
+
 		SpringApplication.run(Gr4AppApplication.class, args);
 	}
 
