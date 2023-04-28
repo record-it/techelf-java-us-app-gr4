@@ -116,7 +116,7 @@ public class RestBookController {
 
     // zmodyfikuj metodę, aby przyjmowała RequestCommentDto
     @PostMapping("/{bookId}/comments")
-    public ResponseEntity<Comment> addComment(@PathVariable long bookId, @RequestBody RequestCommentDto dto) {
+    public ResponseEntity<Comment> addComment(@PathVariable long bookId, @Valid @RequestBody RequestCommentDto dto) {
         final Comment comment = dto.withId(++commentIndex);
         final Optional<Book> optionalBook = findBookById(bookId);
         if (optionalBook.isEmpty()){
