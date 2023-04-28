@@ -8,25 +8,33 @@ package pl.us.spring.gr4app.model;
 // rating - ocena w postaci liczby od 1 do 10 (byte)
 // dodaj adnotacje lombok
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 // W klasie RestBookController
 // utwórz listę komentarzy z dwoma wpisami
 // zdefiniuj metodę zwracającą wszystkie komentarza
-@Data
+
+// Dodaj adnotacje JPA
+@Getter@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Comment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private long id;
 
-    private Book book;
+    @ManyToOne(targetEntity = Book.class, optional = false)
+    private Book book;      // nie dodawaj adnotacji
 
+    @Column(length = 50)
     private String author;
 
+    @Column(length = 2000)
     private String content;
 
     private int rating;
