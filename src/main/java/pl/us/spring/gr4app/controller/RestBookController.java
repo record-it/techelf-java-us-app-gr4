@@ -10,7 +10,6 @@ import pl.us.spring.gr4app.model.Comment;
 
 import java.net.URI;
 import java.util.*;
-import java.util.concurrent.RecursiveTask;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -41,7 +40,6 @@ public class RestBookController {
                             .content("ABC")
                             .rating(6)
                             .author("CDE")
-                            .book(books.get(0))
                             .id(1)
                             .build(),
                     Comment
@@ -49,7 +47,6 @@ public class RestBookController {
                             .content("DEF")
                             .rating(9)
                             .author("TYU")
-                            .book(books.get(0))
                             .id(2)
                             .build()
             )

@@ -1,5 +1,6 @@
 package pl.us.spring.gr4app.dto;
 
+import jakarta.activation.CommandObject;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
@@ -40,10 +41,19 @@ public class RequestCommentDto {
     @Max(10)
     private int rating;
 
-    public Comment withId(long id){
+    public Comment withId(long id) {
         return Comment
                 .builder()
                 .id(id)
+                .author(author)
+                .rating(rating)
+                .content(content)
+                .build();
+    }
+
+    public Comment of() {
+        return Comment
+                .builder()
                 .author(author)
                 .rating(rating)
                 .content(content)

@@ -28,7 +28,7 @@ public class Comment {
     @EqualsAndHashCode.Include
     private long id;
 
-    @ManyToOne(targetEntity = Book.class, optional = false)
+    @ManyToOne
     private Book book;      // nie dodawaj adnotacji
 
     @Column(length = 50)

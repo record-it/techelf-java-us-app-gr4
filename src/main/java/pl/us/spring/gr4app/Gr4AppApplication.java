@@ -6,16 +6,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pl.us.spring.gr4app.model.Book;
 import pl.us.spring.gr4app.model.Comment;
 import pl.us.spring.gr4app.repository.BookRepository;
-
-import java.util.List;
+import pl.us.spring.gr4app.repository.CommentRepository;
 
 @SpringBootApplication
 public class Gr4AppApplication implements CommandLineRunner {
     private final BookRepository bookRepository;
+    private final CommentRepository commentRepository;
 
-    public Gr4AppApplication(BookRepository bookRepository) {
+    public Gr4AppApplication(BookRepository bookRepository, CommentRepository commentRepository) {
         this.bookRepository = bookRepository;
+        this.commentRepository = commentRepository;
     }
+
 
     public static void main(String[] args) {
 
@@ -24,24 +26,23 @@ public class Gr4AppApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (bookRepository.count() > 0){
+        if (bookRepository.count() > 0) {
             return;
         }
-        bookRepository.saveAll(
-                List.of(
-                        Book
-                                .builder()
-                                .author("Bloch")
-                                .editionYear(2021)
-                                .title("Java")
-                                .build(),
-                        Book
-                                .builder()
-                                .author("Freeman")
-                                .editionYear(2022)
-                                .title("ASP.NET")
-                                .build()
-                )
-        );
+        var book = Book
+                .builder()
+                .author("Bloch")
+                .editionYear(2021)
+                .title("Java")
+                .build();
+        bookRepository.save(book);
+        var comment = Comment
+                .builder()
+                .author("Adam")
+                .content("Super")
+                .book(book)
+                .rating(8)
+                .build();
+        commentRepository.save(comment);
     }
 }

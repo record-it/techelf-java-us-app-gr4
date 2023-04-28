@@ -25,7 +25,7 @@ public class Book implements Serializable {
     @Column(nullable = false, length = 50)
     private String author;
 
-    @OneToMany
+    @OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST)
     private List<Comment> comments = new ArrayList<>();
 
     private int editionYear;
