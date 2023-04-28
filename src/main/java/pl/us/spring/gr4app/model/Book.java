@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -22,6 +24,9 @@ public class Book implements Serializable {
 
     @Column(nullable = false, length = 50)
     private String author;
+
+    @OneToMany
+    private List<Comment> comments = new ArrayList<>();
 
     private int editionYear;
 }
