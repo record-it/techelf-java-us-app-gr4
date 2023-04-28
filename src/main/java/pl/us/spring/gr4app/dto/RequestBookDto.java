@@ -4,7 +4,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.pl.PESEL;
 import pl.us.spring.gr4app.model.Book;
 
 import java.io.Serializable;
