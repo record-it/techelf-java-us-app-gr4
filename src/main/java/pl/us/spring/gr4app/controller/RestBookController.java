@@ -24,7 +24,7 @@ public class RestBookController {
                             .title("Java")
                             .editionYear(2022)
                             .build(),
-                    new Book(2, "Spring", "Pivotal", 2020),
+                    new Book(2, "Spring", "Pivotal", Collections.emptyList(), 2000),
                     Book
                             .builder()
                             .id(3)

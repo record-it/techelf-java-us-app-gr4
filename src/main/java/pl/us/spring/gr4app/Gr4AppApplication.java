@@ -34,44 +34,12 @@ public class Gr4AppApplication implements CommandLineRunner {
                                 .author("Bloch")
                                 .editionYear(2021)
                                 .title("Java")
-                                .comments(
-                                        List.of(
-                                                Comment
-                                                        .builder()
-                                                        .content("Super")
-                                                        .author("Adam")
-                                                        .rating(8)
-                                                        .build(),
-                                                Comment
-                                                        .builder()
-                                                        .content("Słaba")
-                                                        .rating(2)
-                                                        .author("Ewa")
-                                                        .build()
-                                        )
-                                )
                                 .build(),
                         Book
                                 .builder()
                                 .author("Freeman")
                                 .editionYear(2022)
                                 .title("ASP.NET")
-                                .comments(
-                                        List.of(
-                                                Comment
-                                                        .builder()
-                                                        .content("Extra")
-                                                        .author("Karol")
-                                                        .rating(9)
-                                                        .build(),
-                                                Comment
-                                                        .builder()
-                                                        .content("Nuda")
-                                                        .rating(3)
-                                                        .author("Ewa")
-                                                        .build()
-                                        )
-                                )
                                 .build()
                 )
         );
